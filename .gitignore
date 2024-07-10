@@ -1,0 +1,14 @@
+# Ignore credentialls file
+config.py
+
+# Ignore the saved_tracks.csv file
+*.csv
+
+# Ignore all .log files
+*.log
+
+# Ignore the node_modules directory
+node_modules/
+
+# Ignore all .pyc files
+*.pyc
