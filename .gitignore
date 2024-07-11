@@ -12,3 +12,5 @@ node_modules/
 
 # Ignore all .pyc files
 *.pyc
+
+.cache
