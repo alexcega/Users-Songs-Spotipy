@@ -20,7 +20,6 @@ def get_track_details(track):
         'album': track['album']['name'],
         'artist': track['artists'][0]['name'],
         'release_date': track['album']['release_date'],
-        'track_id': track_id,
         'length': track['duration_ms'],
         'popularity': track['popularity'],
         'acousticness': features['acousticness'],
@@ -35,24 +34,10 @@ def get_track_details(track):
     }
     return track_info
 
-def get_all_liked_songs():
-    tracks = []
-    limit_step = 40
-
-    tracks = sp.current_user_saved_tracks(limit = limit_step)
-    # for offset in range(0, 10000000, limit_step):
-    #     response = sp.current_user_saved_tracks(
-    #         limit=limit_step,
-    #         offset=offset,
-    #     )
-    #     print(response)
-    #     if len(response) == 0:
-    #         break
-    #     tracks.extend(response)
-    return tracks
-
 def get_liked_songs_info():
-    results = get_all_liked_songs()
+    limit_step = 40
+    results = sp.current_user_saved_tracks(limit = limit_step)
+    
     tracks = []
     
     while results:
@@ -69,12 +54,9 @@ def get_liked_songs_info():
     
     return tracks
 
-mysongs = get_all_liked_songs()
-print(len(mysongs))
-
-
 # Fetch liked songs
-# liked_songs = get_liked_songs_info()
+liked_songs = get_liked_songs_info()
+print(len(liked_songs))
 
 # Convert to DataFrame
 # df = pd.DataFrame(liked_songs)
